@@ -1,0 +1,42 @@
+# Git ignore for the overall project
+
+# Angular Frontend
+/frontend/node_modules
+/frontend/dist
+/frontend/.angular/cache
+/frontend/.vscode
+/frontend/tmp
+
+
+# Java Backend
+/backend/target/
+/backend/.mvn/wrapper/maven-wrapper.jar
+/backend/.project
+/backend/.classpath
+/backend/.settings
+/backend/bin/
+/backend/*.iml
+/backend/.idea/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# VS Code
+.vscode/
+
+# IDE Specific
+*.log
+*.swp
+.env
+
+# npm specific
+npm-debug.log*
+.npm/
+
+# Other temporoary files
+*~
+
+
+
