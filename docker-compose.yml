@@ -1,0 +1,35 @@
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: rochadisten
+      POSTGRES_USER: rochadisten
+      POSTGRES_PASSWORD: rochadisten
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/rochadisten
+      SPRING_DATASOURCE_USERNAME: rochadisten
+      SPRING_DATASOURCE_PASSWORD: rochadisten
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_PROFILES_ACTIVE: prod
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  db_data:
